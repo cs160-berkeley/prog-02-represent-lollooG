@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Catnip</string>
+    <string name="neo_app_name">LocalPolitian</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_welcome_main">LocalPolitians</string>
+    <string name="title_activity_local_politians_list">localPolitians</string>
+    <string name="title_activity_local_politian_detail">localPolitianDetail</string>
+    <string name="title_activity_election2012">election2012</string>
+    <string name="email1">Link to his email <a href="john.doe@gmail.com">john.doe@gmail.com</a></string>
+    <string name="website1">Link to his website <a href="http://google.com/JohnDoe">JohnDoe.com</a></string>
+</resources>

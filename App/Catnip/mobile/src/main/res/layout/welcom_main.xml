@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background3">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:weightSum="1"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/secondLayer1"
+                android:layout_weight="0.05">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:layout_weight="0.25" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.7">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Welcome to another election year!"
+                        android:id="@+id/welcome_text"
+                        android:focusableInTouchMode="false"
+                        android:textSize="16dp"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:layout_gravity="center|bottom"
+                        android:gravity="right" />
+
+                </FrameLayout>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:layout_weight="0.05" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/secondFiller1"
+                android:layout_weight="0.3"
+                ></FrameLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/secondLayer2"
+                android:layout_weight="0.05"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView3"
+                    android:layout_weight="0.15" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Enter ZIP Code"
+                    android:id="@+id/textView"
+                    android:layout_weight="0.4"
+                    android:textStyle="bold|italic"
+                    android:textSize="18dp"
+                    android:layout_gravity="bottom"
+                    android:background="#FFFFFF"
+                    android:elevation="2dp"
+                    android:gravity="center_horizontal" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView4"
+                    android:layout_weight="0.45" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/secondLayer3"
+                android:layout_weight="0.1"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5"
+                    android:layout_weight="0.15"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/zipCodeNum"
+                    android:layout_weight="0.7"
+                    android:background="#ffe8ee"
+                    android:hint="- - - - -"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#ffffff"
+                    android:backgroundTintMode="src_over"
+                    android:inputType="phone"
+                    android:gravity="center_horizontal|bottom" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView6"
+                    android:layout_weight="0.15"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/secondFiller2"
+                android:layout_weight="0.015"></FrameLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.13"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView14"
+                    android:layout_weight="0.25"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/location_button"
+                    android:layout_weight="0.2"
+                    android:layout_margin="0dp"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:background="@drawable/location_button"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView8"
+                    android:layout_weight="0.05"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="search"
+                    android:id="@+id/submitCodeButton"
+                    android:layout_weight="0.35"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:background="#ffe8ee"
+                    android:textSize="18dp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView7"
+                    android:layout_weight="0.15"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView15"
+        android:layout_gravity="right" />
+
+</LinearLayout>

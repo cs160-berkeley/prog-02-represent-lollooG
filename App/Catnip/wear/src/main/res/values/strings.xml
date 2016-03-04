@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Catnip</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="neo_app_name">LocalPolitian</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="title_activity_local_politian_welcome_page">localPolitianWelcomePage</string>
+    <string name="title_activity_my2d_picker">my2dPicker</string>
+</resources>
