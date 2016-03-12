@@ -14,19 +14,11 @@
         android:layout_weight="0.05">
 
 
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:layout_weight="0.25"
-            android:background="@drawable/elec_buttonpng"/>
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/imageView2"
-            android:layout_weight="0.05" />
+            android:layout_weight="0.3" />
 
         <FrameLayout
             android:layout_width="0dp"
@@ -53,14 +45,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/secondFiller1"
-        android:layout_weight="0.05"
-        ></FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8">
+        android:layout_weight="0.85">
 
         <LinearLayout
             android:orientation="vertical"
@@ -68,11 +53,19 @@
             android:layout_height="match_parent"
             android:weightSum="1">
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.45">
+                android:layout_weight=".45"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView26"
+                    android:background="@drawable/ele2012rom"
+                    android:alpha="0.7" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -83,32 +76,20 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/obma"
-                        android:layout_weight="0.35"
-                        android:background="@drawable/obama"
-                        />
+                        android:id="@+id/imageView27"
+                        android:layout_weight=".37" />
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.65">
-
-                        <EditText
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:id="@+id/editText"
-                            android:gravity="center"
-                            android:text="55.6%"
-                            android:textSize="23dp"
-                            android:textColor="#ffffff"
-                            android:background="#000000"
-                            android:alpha="0.4"
-                            android:autoText="true" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text"
+                        android:id="@+id/romper"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical" />
                 </LinearLayout>
 
-            </LinearLayout>
+            </FrameLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -116,11 +97,19 @@
                 android:id="@+id/imageView12"
                 android:layout_weight="0.05"/>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.45" >
+                android:layout_weight=".45"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/obamaper"
+                    android:background="@drawable/ele2012oba"
+                    android:alpha="0.7" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -131,30 +120,19 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/Rommy"
-                        android:layout_weight="0.35"
-                        android:background="@drawable/rommy"/>
+                        android:id="@+id/imageView29"
+                        android:layout_weight=".37" />
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.65" >
-
-                        <EditText
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:id="@+id/editText2"
-                            android:gravity="center"
-                            android:text="42.8%"
-                            android:textSize="23dp"
-                            android:textColor="#ffffff"
-                            android:background="#000000"
-                            android:alpha="0.4"
-                            android:autoText="true" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Text"
+                        android:id="@+id/obaper"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical" />
                 </LinearLayout>
-            </LinearLayout>
+            </FrameLayout>
 
         </LinearLayout>
     </FrameLayout>
@@ -166,27 +144,19 @@
         android:layout_weight="0.1"
         android:weightSum="1">
 
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/returnListButton"
-            android:layout_weight="0.45"
-            android:background="@drawable/listview_button"
-            />
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/imageView9"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.55"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/returnButton"
             android:layout_weight="0.45"
-            android:background="@drawable/return_btton"
-            />
+            android:background="@drawable/home_button"
+            android:alpha="0.8" />
     </LinearLayout>
 
 </LinearLayout>

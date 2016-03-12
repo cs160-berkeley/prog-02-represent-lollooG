@@ -42,21 +42,57 @@ public class WatchListenerService extends WearableListenerService {
             if (event.getType() == DataEvent.TYPE_CHANGED) {
                 // Check the data path
                 String path = event.getDataItem().getUri().getPath();
-                if (path.equals(WEARABLE_DATA_PATH)) {}
-                dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
+                if (path.equals(WEARABLE_DATA_PATH)) {
+                    dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
 
-                // Broadcast DataMap contents to wearable activity for display
-                // The content has the golf hole number and distances to the front,
-                // middle and back pin placements.
+                    // Broadcast DataMap contents to wearable activity for display
+                    // The content has the golf hole number and distances to the front,
+                    // middle and back pin placements.
 
-                Intent messageIntent = new Intent();
-                messageIntent.setAction(Intent.ACTION_SEND);
-                messageIntent.putExtra("datamap", dataMap.toBundle());
-                LocalBroadcastManager.getInstance(this).sendBroadcast(messageIntent);
+                    Intent messageIntent = new Intent();
+                    messageIntent.setAction(Intent.ACTION_SEND);
+                    messageIntent.putExtra("datamap", dataMap.toBundle());
+                    LocalBroadcastManager.getInstance(this).sendBroadcast(messageIntent);
+                } else if (path.equals("/elect")){
+//                    Log.d("myTag", "----------on watch side data recieve-------");
+//                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+//                    Asset profileAsset = dataMapItem.getDataMap().getAsset("profileImage");
+//                    Bitmap bitmap = loadBitmapFromAsset(profileAsset);
+                    dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
+
+                    Intent messageIntent = new Intent();
+                    messageIntent.setAction(Intent.ACTION_SEND);
+                    messageIntent.putExtra("datamap2", dataMap.toBundle());
+                    LocalBroadcastManager.getInstance(this).sendBroadcast(messageIntent);
+
+                    Log.d("myTag", "I am in election mode now.");
+                }
 
             }
         }
     }
+
+//    public Bitmap loadBitmapFromAsset(Asset asset) {
+//        if (asset == null) {
+//            throw new IllegalArgumentException("Asset must be non-null");
+//        }
+//        ConnectionResult result =
+//                mGoogleApiClient.blockingConnect(TIMEOUT_MS, TimeUnit.MILLISECONDS);
+//        if (!result.isSuccess()) {
+//            return null;
+//        }
+//        // convert asset into a file descriptor and block until it's ready
+//        InputStream assetInputStream = Wearable.DataApi.getFdForAsset(
+//                mGoogleApiClient, asset).await().getInputStream();
+//        mGoogleApiClient.disconnect();
+//
+//        if (assetInputStream == null) {
+//            Log.w(TAG, "Requested an unknown Asset.");
+//            return null;
+//        }
+//        // decode the stream into a bitmap
+//        return BitmapFactory.decodeStream(assetInputStream);
+//    }
 
 
     @Override

@@ -50,8 +50,22 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class my2dPicker extends Activity {
+public class my2dPicker extends Activity{
+
+//    public class my2dPicker extends Activity  implements SensorEventListener {
     private static Context context;
+    private static final float SHAKE_THRESHOLD = 1.1f;
+    private static final int SHAKE_WAIT_TIME_MS = 250;
+    private static final float ROTATION_THRESHOLD = 2.0f;
+    private static final int ROTATION_WAIT_TIME_MS = 100;
+
+    static Bitmap bmp[] = new Bitmap[3];
+
+    private SensorManager mSensorManager;
+    private Sensor mSensor;
+    private int mSensorType;
+    private long mShakeTime = 0;
+    private long mRotationTime = 0;
 
     public class data{
         String title;
@@ -70,59 +84,111 @@ public class my2dPicker extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my2d_picker);
         my2dPicker.context = getApplicationContext();
-//
+
+//        Bundle args = getArguments();
+//        if(args != null) {
+//            mSensorType = args.getInt("sensorType");
+//        }
+
 //        byte[] byteArray1 = getIntent().getByteArrayExtra("photo1");
-//        Bitmap bmp1 = BitmapFactory.decodeByteArray(byteArray1, 0, byteArray1.length);
+//        bmp[0] = BitmapFactory.decodeByteArray(byteArray1, 0, byteArray1.length);
+//        byte[] byteArray2 = getIntent().getByteArrayExtra("photo2");
+//        bmp[1] = BitmapFactory.decodeByteArray(byteArray2, 0, byteArray2.length);
+//        byte[] byteArray3 = getIntent().getByteArrayExtra("photo3");
+//        bmp[2] = BitmapFactory.decodeByteArray(byteArray3, 0, byteArray3.length);
 
         data[][] myData = {
                 {new data(getIntent().getStringExtra("name1"), getIntent().getStringExtra("party1"), getIntent().getIntExtra("index1", 0))},
-                {new data(getIntent().getStringExtra("name2"), getIntent().getStringExtra("party2"), getIntent().getIntExtra("index1", 0))},
-                {new data(getIntent().getStringExtra("name3"), getIntent().getStringExtra("party3"), getIntent().getIntExtra("index1", 0))}};
+                {new data(getIntent().getStringExtra("name2"), getIntent().getStringExtra("party2"), getIntent().getIntExtra("index2", 0))},
+                {new data(getIntent().getStringExtra("name3"), getIntent().getStringExtra("party3"), getIntent().getIntExtra("index3", 0))}};
 
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
         pager.setAdapter(new my2dGrid(myData, getFragmentManager()));
 
+
+//        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+//        mSensor = mSensorManager.getDefaultSensor(mSensorType);
+
     }
 
-    public static class myFragment extends Fragment implements SensorEventListener {
-        private static final float SHAKE_THRESHOLD = 1.1f;
-        private static final int SHAKE_WAIT_TIME_MS = 250;
-        private static final float ROTATION_THRESHOLD = 2.0f;
-        private static final int ROTATION_WAIT_TIME_MS = 100;
+//    @Override
+//    public void onSensorChanged(SensorEvent event) {
+//        // If sensor is unreliable, then just return
+//        if (event.accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
+//        {
+//            return;
+//        }
+//
+//        mTextValues.setText(
+//                "x = " + Float.toString(event.values[0]) + "\n" +
+//                        "y = " + Float.toString(event.values[1]) + "\n" +
+//                        "z = " + Float.toString(event.values[2]) + "\n"
+//        );
+//
+//        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+//            detectShake(event);
+//        }
+//    }
+
+//    @Override
+//    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+//
+//    }
+
+
+//    // References:
+//    //  - http://jasonmcreynolds.com/?p=388
+//    //  - http://code.tutsplus.com/tutorials/using-the-accelerometer-on-android--mobile-22125
+//    private void detectShake(SensorEvent event) {
+//        long now = System.currentTimeMillis();
+//
+//        if((now - mShakeTime) > SHAKE_WAIT_TIME_MS) {
+//            mShakeTime = now;
+//
+//            float gX = event.values[0] / SensorManager.GRAVITY_EARTH;
+//            float gY = event.values[1] / SensorManager.GRAVITY_EARTH;
+//            float gZ = event.values[2] / SensorManager.GRAVITY_EARTH;
+//
+//            // gForce will be close to 1 when there is no movement
+//            double gForce = Math.sqrt(gX * gX + gY * gY + gZ * gZ);
+//
+//            // Change background color if gForce exceeds threshold;
+//            // otherwise, reset the color
+//            if(gForce > 3) {
+//                Log.d("myTag", "Shake senser is working: ");
+//            }
+//        }
+//    }
+
+    public static class myFragment extends Fragment{
 
         private View mView;
         private TextView mTextTitle;
         private TextView mTextValues;
-        private SensorManager mSensorManager;
-        private Sensor mSensor;
-        private int mSensorType;
-        private long mShakeTime = 0;
-        private long mRotationTime = 0;
 
         @Override public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
-            Bundle args = getArguments();
-            if(args != null) {
-                mSensorType = args.getInt("sensorType");
-            }
-
-            mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-            mSensor = mSensorManager.getDefaultSensor(mSensorType);
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
             String title = getArguments().getString("title");
-            String text = getArguments().getString("text", "N/A");
+            String text = getArguments().getString("text");
 
             int iconId = 0;
+//            if (text.equals("D")){
+//                iconId = R.drawable.dbackgound;
+//            }else if (text.equals("R")){
+//                iconId = R.drawable.rbackgound;
+//            }else{
+//                iconId = R.drawable.ibackgound;
+//            }
             if (text.equals("D")){
-                iconId = R.drawable.d_icon;
+                iconId = R.drawable.dbackgoundinv;
             }else if (text.equals("R")){
-                iconId = R.drawable.r_icon;
+                iconId = R.drawable.rbackgoundinv;
             }else{
-                iconId = R.drawable.i_icon;
+                iconId = R.drawable.ibackgoundinv;
             }
 
             final int index = getArguments().getInt("index");
@@ -131,12 +197,13 @@ public class my2dPicker extends Activity {
             TextView startTitle = (TextView) mView.findViewById(R.id.politic_name);
             startTitle.setText(title + " ," + text);
 
-            ImageView iView = (ImageView) mView.findViewById(R.id.good_photoView);
+            ImageView iView = (ImageView) mView.findViewById(R.id.backgroundid);
             iView.setImageDrawable(ContextCompat.getDrawable(context, iconId));
 
-            ImageButton ibtn = (ImageButton) mView.findViewById(R.id.detailButton);
-            ibtn.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.detailbutton));
+            ImageView pView = (ImageView) mView.findViewById(R.id.good_photoView);
+//            pView.setImageBitmap(bmp[index]);
 
+            ImageButton ibtn = (ImageButton) mView.findViewById(R.id.detailbutton);
             ibtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -158,62 +225,15 @@ public class my2dPicker extends Activity {
         @Override
         public void onResume() {
             super.onResume();
-            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+//            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
         @Override
         public void onPause() {
             super.onPause();
-            mSensorManager.unregisterListener(this);
-        }
-
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            // If sensor is unreliable, then just return
-            if (event.accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
-            {
-                return;
-            }
-
-            mTextValues.setText(
-                    "x = " + Float.toString(event.values[0]) + "\n" +
-                            "y = " + Float.toString(event.values[1]) + "\n" +
-                            "z = " + Float.toString(event.values[2]) + "\n"
-            );
-
-            if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                detectShake(event);
-            }
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+//            mSensorManager.unregisterListener(this);
         }
 
 
-        // References:
-        //  - http://jasonmcreynolds.com/?p=388
-        //  - http://code.tutsplus.com/tutorials/using-the-accelerometer-on-android--mobile-22125
-        private void detectShake(SensorEvent event) {
-            long now = System.currentTimeMillis();
-
-            if((now - mShakeTime) > SHAKE_WAIT_TIME_MS) {
-                mShakeTime = now;
-
-                float gX = event.values[0] / SensorManager.GRAVITY_EARTH;
-                float gY = event.values[1] / SensorManager.GRAVITY_EARTH;
-                float gZ = event.values[2] / SensorManager.GRAVITY_EARTH;
-
-                // gForce will be close to 1 when there is no movement
-                double gForce = Math.sqrt(gX * gX + gY * gY + gZ * gZ);
-
-                // Change background color if gForce exceeds threshold;
-                // otherwise, reset the color
-                if(gForce > SHAKE_THRESHOLD) {
-                    Log.d("myTag", "Shake senser is working: ");
-                }
-            }
-        }
     }
 
     public class my2dGrid extends FragmentGridPagerAdapter {
